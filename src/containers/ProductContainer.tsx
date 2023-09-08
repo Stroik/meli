@@ -23,12 +23,14 @@ export const ProductContainer = ({ product }: { product: Product }) => {
       <Breadcrumbs />
       <div className="product-container">
         <div className="left">
-          <Image
-            src={product.item.picture}
-            width={680}
-            height={680}
-            alt={product.item.title}
-          />
+          <div className="product-image">
+            <Image
+              src={product.item.picture}
+              width={680}
+              height={680}
+              alt={product.item.title}
+            />
+          </div>
           <div className="product-info">
             <h2>Descripción del producto</h2>
             <p>

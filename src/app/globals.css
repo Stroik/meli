@@ -98,8 +98,11 @@ header {
   @apply flex flex-col md:flex-row bg-white gap-4;
   .left {
     @apply md:w-8/12 order-2 md:order-1;
-    > img {
-      @apply object-none;
+    .product-image {
+      @apply w-full rounded-md;
+      > img {
+        @apply aspect-square object-contain rounded-md;
+      }
     }
     .product-info {
       @apply p-8;
