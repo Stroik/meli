@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Product } from "@/types/Product";
 import { ProductContainer } from "@/containers/ProductContainer";
 
@@ -26,11 +24,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.item.title}${
-      product.item.free_shipping ? " | Envío gratis" : ""
+      product.item.free_shipping
+        ? " | Envío gratis"
+        : `- $${product.item.price.amount}`
     }`,
     openGraph: {
       title: `${product.item.title}${
-        product.item.free_shipping ? " | Envío gratis" : ""
+        product.item.free_shipping
+          ? " | Envío gratis"
+          : `- $${product.item.price.amount}`
       }`,
       description: product.item.description?.slice(0, 150),
       images: [

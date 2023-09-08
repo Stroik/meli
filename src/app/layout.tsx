@@ -6,12 +6,6 @@ export const metadata: Metadata = {
   title: "Mercado Libre",
   description: "Buscador de Mercado Libre",
   keywords: "Mercado Libre, Next.js, React",
-  icons: [
-    {
-      rel: "icon",
-      url: "/favicon.ico",
-    },
-  ],
   openGraph: {
     type: "website",
     locale: "es_AR",

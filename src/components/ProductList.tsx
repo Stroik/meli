@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { findMostFrequentString } from "@/helper/filters";
 import type { Item } from "@/types/Product";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "@/contexts/CategoryProvider";
+import { IconHeartFill, IconHeartLine } from "./Icons";
 
 type Props = {
   products: Item[];
@@ -15,7 +16,7 @@ type Props = {
 
 export const ProductList = ({ products, categories }: Props) => {
   const mostFrequentCategory = findMostFrequentString(categories);
-  const { categories: allCategories, setCategories } =
+  const { setCategories } =
     useContext(CategoryContext);
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const Product = ({ product }: { product: Item }) => {
     currency: product.price.currency,
     minimumFractionDigits: 0,
   });
+  const [active, setActive] = useState<boolean>(false);
   return (
     <li>
       <Link href={`/items/${product.id}`}>
@@ -71,6 +73,14 @@ const Product = ({ product }: { product: Item }) => {
           <h2>{product.title}</h2>
         </div>
       </Link>
+      <span
+        role="switch"
+        aria-checked={active}
+        className="fav"
+        onClick={() => setActive((prev) => !prev)}
+      >
+        {active ? <IconHeartFill /> : <IconHeartLine />}
+      </span>
     </li>
   );
 };
