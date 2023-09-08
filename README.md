@@ -18,9 +18,13 @@ $ npm install
 $ npm run dev
 ```
 
+Acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
+
 ## Ejecución en modo producción
 
 ```bash
 $ npm run build
 $ npm start
 ```
+
+Acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
