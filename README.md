@@ -2,10 +2,6 @@
 
 Implementación del challenge de Frontend para Mercado Libre.
 
-## Demo
-
-[https://meli-navy.vercel.app](https://meli-navy.vercel.app)
-
 ## Setup
 
 Clonar el repositorio e intalar las dependencias.
