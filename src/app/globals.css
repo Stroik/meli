@@ -2,26 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/proxima-nova-regular.otf") format("opentype");
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply h-screen w-full overflow-x-hidden grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 50px 1fr 60px;
+}
+main {
+  @apply w-full h-full bg-light-gray;
+  grid-area: main;
+  > section {
+    @apply container mx-auto;
+  }
+}
+footer {
+  @apply w-full bg-light-gray flex justify-center items-center;
+  grid-area: footer;
+}
+header {
+  grid-area: header;
+  > nav.navbar {
+    @apply w-full h-full bg-primary flex items-center;
+    .navbar-container {
+      @apply container mx-auto flex justify-between items-center;
+      .logo {
+        @apply flex;
+        > a img {
+          @apply w-11;
+        }
+      }
+      .search {
+        @apply w-full flex justify-center pl-6;
+        > input {
+          @apply w-full text-base px-4 py-1 rounded-l-md;
+        }
+        > button {
+          @apply bg-light-gray px-3 rounded-r-md;
+          > img {
+            @apply w-4;
+          }
+        }
+      }
+    }
+  }
+}
+
+.breadcrumbs {
+  @apply flex gap-2 py-4 flex-wrap md:flex-nowrap justify-start;
+  > li {
+    @apply last:font-bold text-sm text-gray-500 whitespace-nowrap;
+  }
+}
+
+.product-list {
+  @apply flex flex-col bg-white rounded-md p-4;
+  > li {
+    @apply w-full p-4 border-b border-gray-200;
+    > a {
+      @apply w-full flex flex-row items-center gap-4;
+      .thumbnail {
+        @apply rounded-md;
+        > img {
+          @apply rounded-md;
+        }
+      }
+      .info {
+        @apply flex flex-col flex-auto;
+        .price {
+          @apply flex flex-auto items-baseline gap-2;
+          > h3 {
+            @apply text-2xl;
+          }
+          .state {
+            @apply hidden md:block text-xs text-gray-500 ml-auto;
+            > span {
+              @apply relative right-20;
+            }
+          }
+        }
+        > h2 {
+          @apply text-[18px] text-gray-500 pt-8 max-w-md;
+        }
+      }
+    }
+  }
+}
+
+.product-container {
+  @apply flex flex-col md:flex-row bg-white gap-4;
+  .left {
+    @apply md:w-8/12 order-2 md:order-1;
+    > img {
+      @apply object-none;
+    }
+    .product-info {
+      @apply p-8;
+      > h2 {
+        @apply text-2xl pb-8;
+      }
+      > p {
+        @apply text-gray-600 text-base leading-tight;
+      }
+    }
+  }
+  .right {
+    @apply px-4 py-8 md:w-4/12 order-1 md:order-2;
+    > span {
+      @apply text-sm pb-4 block;
+    }
+    > h1 {
+      @apply text-2xl;
+    }
+    > p {
+      @apply text-4xl py-8;
+    }
+    > button {
+      @apply bg-blue text-white px-4 py-2 rounded-md w-[calc(100%-32px)];
+    }
+  }
+}
+.home {
+  @apply h-full w-full grid place-content-center;
+}
+.box {
+  @apply p-8 flex flex-col bg-white rounded-md hover:shadow-md;
+  > h1 {
+    @apply text-4xl;
+  }
+  > h2 {
+    @apply text-2xl pb-2 border-b;
+  }
+
+  .info {
+    @apply pt-2;
+    > ul {
+      @apply flex;
+      > li {
+        @apply text-xs after:content-['•'] after:mx-2 after:text-gray-400 after:font-bold last:after:content-[''];
+        > a {
+          @apply hover:text-[#3483fa];
+        }
+      }
+    }
+  }
 }
