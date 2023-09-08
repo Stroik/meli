@@ -133,10 +133,10 @@ header {
 .box {
   @apply p-8 flex flex-col bg-white rounded-md hover:shadow-md;
   > h1 {
-    @apply text-4xl;
+    @apply text-3xl;
   }
   > h2 {
-    @apply text-2xl pb-2 border-b;
+    @apply text-xl pb-2 border-b;
   }
 
   .info {

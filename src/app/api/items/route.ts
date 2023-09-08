@@ -1,4 +1,4 @@
-import type { Author, Category, Item, Products } from "@/types/Product";
+import type { Author, Item, Products } from "@/types/Product";
 import { NextResponse } from "next/server";
 
 function mappedProducts(originalArray: any[]): Products {
@@ -19,6 +19,11 @@ function mappedProducts(originalArray: any[]): Products {
     condition: item.condition,
     free_shipping: item.shipping?.free_shipping ?? false,
     state: item.address?.state_name ?? "",
+    /**
+     * La API no devuelve el nombre de la categoría, solo el id. Por lo que el
+     * breadcrumb utilizará el ID para mostrar la categoría más popular entre
+     * los resultados de búsqueda.
+     */
     category_id: item.category_id,
   }));
 

@@ -2,9 +2,7 @@ import type { Author } from "@/types/Product";
 import Link from "next/link";
 
 async function getAuthor() {
-  const author_res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/author`, {
-    cache: "no-store",
-  });
+  const author_res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/author`);
   const author_data = await author_res.json();
 
   return author_data;
@@ -22,16 +20,27 @@ export default async function Home() {
         <div className="info">
           <ul>
             <li>
-              <Link href="#">Repositorio</Link>
+              <Link href="https://github.com/Stroik/meli" target="_blank">
+                Repositorio
+              </Link>
             </li>
             <li>
-              <Link href="#">Linkedin</Link>
+              <Link
+                href="https://www.linkedin.com/in/augusto-marinaro/"
+                target="_blank"
+              >
+                Linkedin
+              </Link>
             </li>
             <li>
-              <Link href="#">Email</Link>
+              <Link href="mailto:marinaro.augusto@gmail.com" target="_blank">
+                Email
+              </Link>
             </li>
             <li>
-              <Link href="#">Web</Link>
+              <Link href="https://marinaroaugusto.com.ar" target="_blank">
+                Web
+              </Link>
             </li>
           </ul>
         </div>
