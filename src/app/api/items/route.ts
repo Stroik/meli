@@ -38,7 +38,7 @@ export async function GET(request: Request) {
   const params = new URL(request.url);
   const query = params.searchParams.get("q") ?? "";
   const query_res = await fetch(
-    `${process.env.API_URL}/sites/MLA/search?q=${query}&limit=10`
+    `${process.env.API_URL}/sites/MLA/search?q=${query}&limit=4`
   );
 
   if (!query_res.ok) {
